@@ -7,15 +7,15 @@ namespace Importør.Models
 {
     public class User
     {
-        public string _userName { get; set; }
-        private string _password { get; set; }
-        public string _email { get; set; }
+        public string UserName { get; set; }
+        private string Password { get; set; }
+        public string Email { get; set; }
 
         public User(string userName, string password, string email)
         {
-            _userName = userName;
-            _password = password;
-            _email = email;
+            UserName = userName;
+            Password = password;
+            Email = email;
         }
 
     }

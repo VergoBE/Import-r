@@ -7,21 +7,23 @@ namespace Importør.Models
 {
     public class Car
     {
-        public int _type { get; set; }
-        public string _fuelType { get; set; }
-        public string _model { get; set; }
-        public string _årgang { get; set; }
-        public double _pris { get; set; }
-        public string _lokation { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public string FuelType { get; set; }
+        public string Model { get; set; }
+        public string Årgang { get; set; }
+        public double Pris { get; set; }
+        public string Lokation { get; set; }
 
-        public Car(int type, string fuelType, string model, string årgang, double pris, string lokation)
+        public Car(int id, string type, string fuelType, string model, string årgang, double pris, string lokation)
         {
-            _type = type;
-            _fuelType = fuelType;
-            _model = model;
-            _årgang = årgang;
-            _pris = pris;
-            _lokation = lokation;
+            Id = id;
+            Type = type;
+            FuelType = fuelType;
+            Model = model;
+            Årgang = årgang;
+            Pris = pris;
+            Lokation = lokation;
         }
 
 
