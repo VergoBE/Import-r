@@ -7,6 +7,5 @@ namespace Importør.Services
 {
     public class CarService
     {
-
     }
 }
