@@ -16,7 +16,7 @@ namespace Importør.MockData
             new Car(1, "SUV", "Hybrid", "EQS", "2020", 800.000, "Haderslev"),
             new Car(1, "SUV", "Hybrid", "EQS", "2020", 800.000, "Haderslev"),
             new Car(1, "SUV", "Hybrid", "EQS", "2020", 800.000, "Haderslev")
-         
+
         };
 
 

@@ -88,40 +88,40 @@
             {
                 foreach (var item in Model.Cars)
                 {
-            <tr class="btn-secondary">
-                <td>
-                    @item._model
-                </td>
-                <td>
-                    @item._type
-                </td>
-                <td>
-                    @item._årgang
-                </td>
-                <td>
-                    @item._lokation
-                </td>
-                <td>
-                    @item._pris
-                </td>
-                <td>
-                    @item._fuelType
-                </td>
-                <td>
-                    <!-- Call to action buttons -->
-                    <ul class="list-inline m-0">
-                        <li class="list-inline-item">
-                            <a class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" title="Edit" asp-page="EditItem" asp-route-id="@item._id"><i class="fa fa-edit"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Delete" asp-page="DeleteItem" asp-route-id="@item._id"><i class="fa fa-trash"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="btn btn-primary btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Order" asp-page="../Order/OrderItem" asp-route-id="@item._id"><i class="fa fa-shopping-cart"></i></a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+                    <tr class="btn-secondary">
+                        <td>
+                            @item._model
+                        </td>
+                        <td>
+                            @item._type
+                        </td>
+                        <td>
+                            @item._årgang
+                        </td>
+                        <td>
+                            @item._lokation
+                        </td>
+                        <td>
+                            @item._pris
+                        </td>
+                        <td>
+                            @item._fuelType
+                        </td>
+                        <td>
+                            <!-- Call to action buttons -->
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <a class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" title="Edit" asp-page="EditItem" asp-route-id="@item._id"><i class="fa fa-edit"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Delete" asp-page="DeleteItem" asp-route-id="@item._id"><i class="fa fa-trash"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-primary btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Order" asp-page="../Order/OrderItem" asp-route-id="@item._id"><i class="fa fa-shopping-cart"></i></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
                 }
             }
         </tbody>
