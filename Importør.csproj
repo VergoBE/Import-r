@@ -5,16 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Car\**" />
     <Compile Remove="Services\DBService\**" />
     <Compile Remove="ViewModel\**" />
-    <Content Remove="Pages\Car\**" />
     <Content Remove="Services\DBService\**" />
     <Content Remove="ViewModel\**" />
-    <EmbeddedResource Remove="Pages\Car\**" />
     <EmbeddedResource Remove="Services\DBService\**" />
     <EmbeddedResource Remove="ViewModel\**" />
-    <None Remove="Pages\Car\**" />
     <None Remove="Services\DBService\**" />
     <None Remove="ViewModel\**" />
   </ItemGroup>

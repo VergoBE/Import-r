@@ -24,7 +24,7 @@ namespace Importør.Services
         {
             foreach(Car car in cars)
             {
-                if (car._model == s) return cars;
+                if (car.Model == s) return cars;
             }
             return null;
         }
@@ -33,7 +33,7 @@ namespace Importør.Services
         {
             foreach(Car car in cars)
             {
-                if (car._fuelType == fuel) return cars;
+                if (car.FuelType == fuel) return cars;
             }
             return null;
         }
@@ -43,12 +43,12 @@ namespace Importør.Services
             return cars;
         }
 
-        public IEnumerable<Car> PriceSort(int maxPrice, int minPrice = 0)
+        public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
         {
             return from car in cars
-                   where (minPrice == 0 && car._pris <= maxPrice) ||
-                      (maxPrice == 0 && car._pris >= minPrice) ||
-                      (car._pris >= minPrice && car._pris <= maxPrice)
+                   where (minPrice == 0 && car.Pris <= maxPrice) ||
+                      (maxPrice == 0 && car.Pris >= minPrice) ||
+                      (car.Pris >= minPrice && car.Pris <= maxPrice)
                       select car;
         }
     }
