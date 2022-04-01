@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Importør.Services;
 using Importør.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Importør.Pages.Car
 {
+    [Authorize(Roles = "Admin")]
     public class CreateCarModel : PageModel
     {
         private CarService carService;
@@ -25,6 +27,7 @@ namespace Importør.Pages.Car
         {
             return Page();
         }
+        
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)

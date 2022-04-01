@@ -10,9 +10,14 @@ namespace Importør.Services
     public class UserService : IUserService
     {
         private List<User> users;
+
         public IEnumerable<User> GetUsers()
         {
             return users;
+        }
+        public UserService()
+        {
+            users = MockData.MockUsers.GetMockUsers();
         }
     }
 }

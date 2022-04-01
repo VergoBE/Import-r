@@ -16,11 +16,13 @@ namespace Importør.Pages.Login
 {
     public class LoginModel : PageModel
     {
+      //  public static User LoggedInUser { get; set; } = null;
         private UserService userService;
 
         public LoginModel(UserService userService)
         {
             this.userService = userService;
+            
         }
         [BindProperty] public string UserName { get; set; }
         [BindProperty, DataType(DataType.Password)] public string Password { get; set; }
@@ -36,17 +38,23 @@ namespace Importør.Pages.Login
                     var passwordHasher = new PasswordHasher<string>();
                     if(passwordHasher.VerifyHashedPassword(null,u.Password,Password) == PasswordVerificationResult.Success)
                     {
+                      //  LoggedInUser = u;
                         var claims = new List<Claim>
                         {
                             new Claim(ClaimTypes.Name,UserName)
                         };
-                        if (UserName !="admin") claims.Add(new Claim(ClaimTypes.Role, "Customer"));
+                        if (UserName != "admin") claims.Add(new Claim(ClaimTypes.Role, "Customer"));
+                        if(UserName == "admin") claims.Add(new Claim(ClaimTypes.Role, "Admin"));
                         var claimsIdentity =
                             new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                             new ClaimsPrincipal(claimsIdentity));
+                        
+                        
                         return RedirectToPage("/Car/GetAllCars");
+                        
                     }
+                    
                 }
             }
             return RedirectToPage("/Car/GetAllCars");

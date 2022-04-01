@@ -10,6 +10,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Importør.Models;
 using Importør.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace Importør
 {
@@ -28,6 +31,21 @@ namespace Importør
             services.AddRazorPages();
             services.AddTransient<CarService, CarService>();
             services.AddTransient<UserService, UserService>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions =>
+            {
+                cookieOptions.LoginPath = "/Login/Login";
+            });
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request. 
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy =>
+                    policy.RequireClaim(ClaimTypes.Role, "Admin"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
