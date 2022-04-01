@@ -36,21 +36,15 @@ namespace Importør.Pages.Car
             //await Dbservice.AddÓbjectAsync(car);
         }
 
-        public IActionResult PriceSearch(int maxPrice, int minPrice)
-        {
-            Cars = carService.PriceSearch(maxPrice, minPrice).ToList();
-            return Page();
-        }
+        //public IActionResult PriceSearch(int maxPrice, int minPrice)
+        //{
+        //    Cars = carService.PriceSearch(maxPrice, minPrice).ToList();
+        //    return Page();
+        //}
 
         public IActionResult FuelSearch(string fuel)
         {
             Cars = carService.FuelSearch(fuel).ToList();
-            return Page();
-        }
-
-        public IActionResult CarSearch(string s)
-        {
-            Cars = carService.CarSearch(s).ToList();
             return Page();
         }
 
