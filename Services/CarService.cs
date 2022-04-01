@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Importør.Models;
 using Importør.Interface;
+using Importør.MockData;
 
 namespace Importør.Services
 {
@@ -12,6 +13,7 @@ namespace Importør.Services
         private List<Car> cars;
         public CarService()
         {
+            cars = MockCars.GetMockCars();
             //insert json/DB injection here pls
         }
         public void AddCar(Car car)
