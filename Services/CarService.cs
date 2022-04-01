@@ -24,11 +24,10 @@ namespace Importør.Services
 
         public IEnumerable<Car> CarSearch(string s)
         {
-            foreach(Car car in cars)
-            {
-                if (car.Model == s) return cars;
-            }
-            return null;
+
+            if (string.IsNullOrEmpty(s)) return cars;
+            return cars.FindAll(Car => Car.Model.ToLower().Contains(s.ToLower()));
+            //return from car in cars where car.Model.ToLower().Contains(s.ToLower()) select car;
         }
 
         public IEnumerable<Car> FuelSearch(string fuel)
