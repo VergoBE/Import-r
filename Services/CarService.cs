@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Importør.Models;
 using Importør.Interface;
 using Importør.MockData;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Importør.Services
 {
@@ -22,12 +24,34 @@ namespace Importør.Services
             //Save Here When DB/json made
         }
 
-        public IEnumerable<Car> CarSearch(string s)
+        public IEnumerable<Car> CarSearch(string str)
         {
 
-            if (string.IsNullOrEmpty(s)) return cars;
-            return cars.FindAll(Car => Car.Model.ToLower().Contains(s.ToLower()));
+            List<Car> nameSearch = new List<Car>();
+            foreach (Car car in cars)
+            {
+                if (car.Model.ToLower().Contains(str.ToLower()))
+                {
+                    nameSearch.Add(car);
+                }
+            }
+
+            return nameSearch;
             //return from car in cars where car.Model.ToLower().Contains(s.ToLower()) select car;
+        }
+
+        public IEnumerable<Car> LocationSearch(string s)
+        {
+            List<Car> namesearch = new List<Car>();
+            foreach (Car car in cars)
+            {
+                if (car.Location.ToLower().Contains(s.ToLower()))
+                {
+                    namesearch.Add(car);
+                }
+            }
+
+            return namesearch;
         }
 
         public IEnumerable<Car> FuelSearch(string fuel)
@@ -43,28 +67,33 @@ namespace Importør.Services
         {
             return cars;
         }
-
         public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
         {
-            return from car in cars
-                   where (minPrice == 0 && car.Pris <= maxPrice) ||
-                      (maxPrice == 0 && car.Pris >= minPrice) ||
-                      (car.Pris >= minPrice && car.Pris <= maxPrice)
-                      select car;
+            List<Car> filterList = new List<Car>();
+            foreach (Car car in cars)
+            {
+                if ((minPrice == 0 && car.Price <= maxPrice) || (maxPrice == 0 && car.Price >= minPrice) || (car.Price >= minPrice && car.Price <= maxPrice))
+                {
+                    filterList.Add(car);
+                }
+            }
+
+            return filterList;
         }
+
         public void UpdateCar(Car car)
         {
             if(car != null)
             {
                 foreach(Car c in cars)
                 {
-                    if(c.Id == car.Id)
+                    if(c.CarId == car.CarId)
                     {
                         c.Model = car.Model;
-                        c.Pris = car.Pris;
+                        c.Price = car.Price;
                         c.Type = car.Type;
-                        c.Årgang = car.Årgang;
-                        c.Lokation = car.Lokation;
+                        c.Year = car.Year;
+                        c.Location = car.Location;
                         c.FuelType = car.FuelType;
                     }
                     //Insert Save method here for DB
