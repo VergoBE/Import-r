@@ -28,6 +28,7 @@ namespace Importør
             services.AddRazorPages();
             services.AddTransient<CarService, CarService>();
             services.AddTransient<UserService, UserService>();
+            services.AddTransient<LoginService, LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

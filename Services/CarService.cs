@@ -6,6 +6,7 @@ using Importør.Models;
 using Importør.Interface;
 using Importør.MockData;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Importør.Services
 {
@@ -37,6 +38,20 @@ namespace Importør.Services
 
             return nameSearch;
             //return from car in cars where car.Model.ToLower().Contains(s.ToLower()) select car;
+        }
+
+        public IEnumerable<Car> LocationSearch(string s)
+        {
+            List<Car> namesearch = new List<Car>();
+            foreach (Car car in cars)
+            {
+                if (car.Location.ToLower().Contains(s.ToLower()))
+                {
+                    namesearch.Add(car);
+                }
+            }
+
+            return namesearch;
         }
 
         public IEnumerable<Car> FuelSearch(string fuel)

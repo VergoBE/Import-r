@@ -59,6 +59,5 @@ namespace Importør.Pages.Car
             Cars = carService.PriceSearch(maxPrice, minPrice).ToList();
             return Page();
         }
-        
     }
 }

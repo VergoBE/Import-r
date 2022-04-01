@@ -1,0 +1,73 @@
+﻿@page "{handler?}"
+@model Importør.Pages.Car.CarLocationsModel
+@{
+}
+<br />
+<h1>Cars And their locations</h1>
+<br />
+<div class="row">
+    <div class="col-4"><h5>Search Name</h5></div>
+    <div class="col-4"><h5>Filter Price</h5></div>
+    <div class="col-4"></div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <form method="post" class="form-inline">
+            <input asp-for="@Model.SearchString" class="form-control mr-1" placeholder="Enter search term" />
+            <input type="submit" asp-page-handler="LocationSearch" value="Search" class="btn btn-primary" />
+        </form>
+    </div>
+
+    <div class="col-2"></div>
+</div>
+<br />
+<table class="table table-bordered table-hover table-striped" width="60%">
+    <col style="width: 5%">
+    <col style="width: 77%">
+    <col style="width: 9%">
+    <col style="width: 9%">
+    <thead>
+        <tr>
+            <th>
+                Location
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Fuel Type
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (@Model.Cars != null)
+        {
+            foreach (var car in Model.Cars)
+            {
+                <tr>
+                    <td>
+                        @car.Location
+                    </td>
+                    <td>
+                        @car.Type
+                    </td>
+                    <td>
+                        @car.Model
+                    </td>
+                    <td>
+                        @car.Year
+                    </td>
+                    <td>
+                        @car.FuelType
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
