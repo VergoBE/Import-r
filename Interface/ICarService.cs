@@ -13,5 +13,6 @@ namespace Importør.Interface
         IEnumerable<Car> CarSearch(string s);
         IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0);
         IEnumerable<Car> FuelSearch(string fuel);
+        void UpdateCar(Car car);
     }
 }

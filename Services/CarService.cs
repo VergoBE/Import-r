@@ -53,5 +53,24 @@ namespace Importør.Services
                       (car.Pris >= minPrice && car.Pris <= maxPrice)
                       select car;
         }
+        public void UpdateCar(Car car)
+        {
+            if(car != null)
+            {
+                foreach(Car c in cars)
+                {
+                    if(c.Id == car.Id)
+                    {
+                        c.Model = car.Model;
+                        c.Pris = car.Pris;
+                        c.Type = car.Type;
+                        c.Årgang = car.Årgang;
+                        c.Lokation = car.Lokation;
+                        c.FuelType = car.FuelType;
+                    }
+                    //Insert Save method here for DB
+                }
+            }
+        }
     }
 }
