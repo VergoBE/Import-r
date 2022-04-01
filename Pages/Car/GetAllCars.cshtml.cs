@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Importør.MockData;
 using Importør.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -50,6 +51,12 @@ namespace Importør.Pages.Car
         public IActionResult CarSearch(string s)
         {
             Cars = carService.CarSearch(s).ToList();
+            return Page();
+        }
+
+        public IActionResult OnPostCarSearch()
+        {
+            Cars = carService.CarSearch(SearchString).ToList();
             return Page();
         }
         
