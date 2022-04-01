@@ -58,7 +58,7 @@ namespace Importør.Services
             {
                 foreach(Car c in cars)
                 {
-                    if(c.Id == car.Id)
+                    if(c.CarId == car.CarId)
                     {
                         c.Model = car.Model;
                         c.Price = car.Price;
