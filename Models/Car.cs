@@ -11,19 +11,19 @@ namespace Importør.Models
         public string Type { get; set; }
         public string FuelType { get; set; }
         public string Model { get; set; }
-        public string Årgang { get; set; }
-        public double Pris { get; set; }
-        public string Lokation { get; set; }
+        public string Year { get; set; }
+        public double Price { get; set; }
+        public string Location { get; set; }
 
-        public Car(int id, string type, string fuelType, string model, string årgang, double pris, string lokation)
+        public Car(int id, string type, string fuelType, string model, string year, double price, string location)
         {
             Id = id;
             Type = type;
             FuelType = fuelType;
             Model = model;
-            Årgang = årgang;
-            Pris = pris;
-            Lokation = lokation;
+            Year = year;
+            Price = price;
+            Location = location;
         }
 
 

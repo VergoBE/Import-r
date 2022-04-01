@@ -47,9 +47,9 @@ namespace Importør.Services
         public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
         {
             return from car in cars
-                   where (minPrice == 0 && car.Pris <= maxPrice) ||
-                      (maxPrice == 0 && car.Pris >= minPrice) ||
-                      (car.Pris >= minPrice && car.Pris <= maxPrice)
+                   where (minPrice == 0 && car.Price <= maxPrice) ||
+                      (maxPrice == 0 && car.Price >= minPrice) ||
+                      (car.Price >= minPrice && car.Price <= maxPrice)
                       select car;
         }
         public void UpdateCar(Car car)
@@ -61,10 +61,10 @@ namespace Importør.Services
                     if(c.Id == car.Id)
                     {
                         c.Model = car.Model;
-                        c.Pris = car.Pris;
+                        c.Price = car.Price;
                         c.Type = car.Type;
-                        c.Årgang = car.Årgang;
-                        c.Lokation = car.Lokation;
+                        c.Year = car.Year;
+                        c.Location = car.Location;
                         c.FuelType = car.FuelType;
                     }
                     //Insert Save method here for DB
