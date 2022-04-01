@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Importør.Models;
 using Importør.Interface;
 using Importør.MockData;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Importør.Services
 {
@@ -22,11 +23,19 @@ namespace Importør.Services
             //Save Here When DB/json made
         }
 
-        public IEnumerable<Car> CarSearch(string s)
+        public IEnumerable<Car> CarSearch(string str)
         {
 
-            if (string.IsNullOrEmpty(s)) return cars;
-            return cars.FindAll(Car => Car.Model.ToLower().Contains(s.ToLower()));
+            List<Car> nameSearch = new List<Car>();
+            foreach (Car car in cars)
+            {
+                if (car.Model.ToLower().Contains(str.ToLower()))
+                {
+                    nameSearch.Add(car);
+                }
+            }
+
+            return nameSearch;
             //return from car in cars where car.Model.ToLower().Contains(s.ToLower()) select car;
         }
 
@@ -44,14 +53,14 @@ namespace Importør.Services
             return cars;
         }
 
-        public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
-        {
-            return from car in cars
-                   where (minPrice == 0 && car.Pris <= maxPrice) ||
-                      (maxPrice == 0 && car.Pris >= minPrice) ||
-                      (car.Pris >= minPrice && car.Pris <= maxPrice)
-                      select car;
-        }
+        //public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
+        //{
+            //return from car in cars
+            //       where (minPrice == 0 && car.Pris <= maxPrice) ||
+            //          (maxPrice == 0 && car.Pris >= minPrice) ||
+            //          (car.Pris >= minPrice && car.Pris <= maxPrice)
+            //          select car;
+        //}
         public void UpdateCar(Car car)
         {
             if(car != null)
