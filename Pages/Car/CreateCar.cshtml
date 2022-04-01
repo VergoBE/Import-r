@@ -1,0 +1,45 @@
+﻿@page
+@model Importør.Pages.Car.CreateCarModel
+@{
+}
+<h1>Create a Cool new Mercedes!!!!!1!</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Car.Id" class="control-lable"></label>
+                <input asp-for="@Model.Car.Id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Car.Model" class="control-lable"></label>
+                <input asp-for="@Model.Car.Model" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Car.Pris" class="control-lable"></label>
+                <input asp-for="@Model.Car.Pris" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Car.Lokation" class="control-lable"></label>
+                <input asp-for="@Model.Car.Lokation" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Car.Type" class="control-lable"></label>
+                <input asp-for="@Model.Car.Type" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Car.FuelType" class="control-lable"></label>
+                <input asp-for="@Model.Car.FuelType" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Car.Årgang" class="control-lable"></label>
+                <input asp-for="@Model.Car.Årgang" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="/Car/GetAllCars">Back to all Cars</a>
+</div>
