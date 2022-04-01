@@ -26,6 +26,7 @@ namespace Importør
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddDbContext<CarDbContext>();
             services.AddTransient<CarService, CarService>();
             services.AddTransient<UserService, UserService>();
             services.AddTransient<LoginService, LoginService>();
