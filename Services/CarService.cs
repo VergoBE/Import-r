@@ -52,15 +52,20 @@ namespace Importør.Services
         {
             return cars;
         }
+        public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
+        {
+            List<Car> filterList = new List<Car>();
+            foreach (Car car in cars)
+            {
+                if ((minPrice == 0 && car.Price <= maxPrice) || (maxPrice == 0 && car.Price >= minPrice) || (car.Price >= minPrice && car.Price <= maxPrice))
+                {
+                    filterList.Add(car);
+                }
+            }
 
-        //public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
-        //{
-            //return from car in cars
-            //       where (minPrice == 0 && car.Pris <= maxPrice) ||
-            //          (maxPrice == 0 && car.Pris >= minPrice) ||
-            //          (car.Pris >= minPrice && car.Pris <= maxPrice)
-            //          select car;
-        //}
+            return filterList;
+        }
+
         public void UpdateCar(Car car)
         {
             if(car != null)
