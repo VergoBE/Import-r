@@ -53,6 +53,12 @@ namespace Importør.Pages.Car
             Cars = carService.CarSearch(s).ToList();
             return Page();
         }
+
+        public IActionResult OnPostCarSearch()
+        {
+            Cars = carService.CarSearch(SearchString).ToList();
+            return Page();
+        }
         
     }
 }
