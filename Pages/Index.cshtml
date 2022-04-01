@@ -3,6 +3,48 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        $('#All').collapse("show");
+    });
+    $(document).on("click", ".All", function () {
+        $('#All').collapse("show");
+        $('#HB').collapse("hide");
+        $('#SD').collapse("hide");
+        $('#SC').collapse("hide");
+        $('#MPV').collapse("hide");
+    });
+    $(document).on("click", ".HB", function () {
+        $('#All').collapse("hide");
+        $('#HB').collapse("show");
+        $('#SD').collapse("hide");
+        $('#SC').collapse("hide");
+        $('#MPV').collapse("hide");
+    });
+    $(document).on("click", ".SD", function () {
+        $('#All').collapse("hide");
+        $('#HB').collapse("hide");
+        $('#SD').collapse("show");
+        $('#SC').collapse("hide");
+        $('#MPV').collapse("hide");
+    });
+    $(document).on("click", ".SC", function () {
+        $('#All').collapse("hide");
+        $('#HB').collapse("hide");
+        $('#SD').collapse("hide");
+        $('#SC').collapse("show");
+        $('#MPV').collapse("hide");
+    });
+    $(document).on("click", ".MPV", function () {
+        $('#All').collapse("hide");
+        $('#HB').collapse("hide");
+        $('#SD').collapse("hide");
+        $('#SC').collapse("hide");
+        $('#MPV').collapse("show");
+    });
+</script>
+
 
 <div class="container bg-light mb-5">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -33,36 +75,36 @@
     </div>
 
     <div class="btn-group text-center col-md-12" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#All" aria-expanded="false" aria-controls="All">ALL</button>
-        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#HB" aria-expanded="false" aria-controls="HB">HATCHBACK</button>
-        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#SD" aria-expanded="false" aria-controls="SD">SEDAN</button>
-        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#SC" aria-expanded="false" aria-controls="SC">STATIONCAR</button>
-        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#MPV" aria-expanded="false" aria-controls="MPV">MPV</button>
+        <button type="button" class="btn btn-secondary All">ALL</button>
+        <button type="button" class="btn btn-secondary HB">HATCHBACK</button>
+        <button type="button" class="btn btn-secondary SD">SEDAN</button>
+        <button type="button" class="btn btn-secondary SC">STATIONCAR</button>
+        <button type="button" class="btn btn-secondary MPV">MPV</button>
     </div>
     
     <div class="collapse" id="All">
         <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <p>1</p>
         </div>
     </div>
     <div class="collapse" id="HB">
         <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <p>2</p>
         </div>
     </div>
     <div class="collapse" id="SD">
         <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <p>3</p>
         </div>
     </div>
     <div class="collapse" id="SC">
         <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <p>4</p>
         </div>
     </div>
     <div class="collapse" id="MPV">
         <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <p>5</p>
         </div>
     </div>
     
