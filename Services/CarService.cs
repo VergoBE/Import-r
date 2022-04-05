@@ -67,6 +67,14 @@ namespace Importør.Services
         {
             return cars;
         }
+        public Car GetCar(int id)
+        {
+            foreach(Car car in cars)
+            {
+                if (car.CarId == id) return car;
+            }
+            return null;
+        }
         public IEnumerable<Car> PriceSearch(int maxPrice, int minPrice = 0)
         {
             List<Car> filterList = new List<Car>();
@@ -99,6 +107,24 @@ namespace Importør.Services
                     //Insert Save method here for DB
                 }
             }
+        }
+        public Car DeleteCar(int id)
+        {
+            Car carToDelete = null;
+            foreach(Car car in cars)
+            {
+                if(car.CarId == id)
+                {
+                    carToDelete = car;
+                    break;
+                }
+                if (carToDelete != null)
+                {
+                    cars.Remove(carToDelete);
+                }
+
+            }
+            return carToDelete;
         }
     }
 }
