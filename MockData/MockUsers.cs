@@ -12,8 +12,8 @@ namespace Importør.MockData
         private static PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
 
         private static List<User> users = new List<User>() {
-            new User("admin", passwordHasher.HashPassword("admin", "secret"), "admin@gmail.com"),
-            new User("DogShitUser",passwordHasher.HashPassword("DogShitUser","123"),"Bob123@gmail.com"),
+            new User("admin", passwordHasher.HashPassword(null, "secret"),"admin@gmail.com"),
+            new User("DogShitUser",passwordHasher.HashPassword(null,"123"),"bob1@gmail.com"),
             
         };
 
