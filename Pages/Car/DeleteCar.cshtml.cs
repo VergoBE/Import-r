@@ -27,10 +27,10 @@ namespace Importør.Pages.Car
             return Page();
 
         }
-        public IActionResult OnPost(int id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             Car = carService.GetCar(id);
-            Models.Car CarDeleted = carService.DeleteCar(id);
+            await carService.DeleteCarAsync(id);
             return RedirectToPage("GetAllCars");
         }
     }

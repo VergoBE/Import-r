@@ -26,14 +26,14 @@ namespace Importør.Pages.Car
             Car = carService.GetCar(id);
             return Page();
         }
-        public IActionResult OnPost(int id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             Car = carService.GetCar(id);
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            carService.UpdateCar(Car);
+            await carService.UpdateCarAsync(Car);
             return RedirectToPage("GetAllCars");
         }
     }
