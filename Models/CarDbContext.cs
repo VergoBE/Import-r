@@ -12,5 +12,9 @@ namespace Importør.Models
         {
             options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CarDB; Integrated Security=True; Connect Timeout=30; Encrypt=False");
         }
-    }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Order> Orders { get; set; }
+    
+}
 }
