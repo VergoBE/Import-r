@@ -19,6 +19,7 @@
         <form method="post" class="form-inline">
             <input asp-for="@Model.SearchString" class="form-control mr-1" placeholder="Enter search term" />
             <input type="submit" asp-page-handler="CarSearch" value="Search" class="btn btn-primary" />
+            <input type="submit" asp-page-handler="LocationSearch" value="Search" class="btn btn-primary" />
         </form>
     </div>
 
