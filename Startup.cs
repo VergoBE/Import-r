@@ -32,6 +32,8 @@ namespace Importør
             services.AddDbContext<CarDbContext>();
             services.AddTransient<CarService, CarService>();
             services.AddTransient<UserService, UserService>();
+            services.AddTransient<DbServiceNonGeneric, DbServiceNonGeneric>();
+            services.AddTransient<DbGenericService<Task>, DbGenericService<Task>>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions =>
             {
                 cookieOptions.LoginPath = "/Login/Login";
