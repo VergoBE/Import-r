@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Importør.Models
-{
+{    
     public class Car
     {
         [Key]
