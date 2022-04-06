@@ -28,13 +28,13 @@ namespace Importør.Pages.Car
             return Page();
         }
         
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            carService.AddCar(Car);
+            await carService.AddCarAsync(Car);
             return RedirectToPage("GetAllCars");
         }
 

@@ -10,17 +10,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Importør.Services
 {
-    public class CarService : ICarService
+    public class CarService
     {
         private List<Car> cars;
-        public CarService()
+        private DbGenericService<Car> DbService { get; set; }
+        public CarService(DbGenericService<Car> dbService)
         {
             cars = MockCars.GetMockCars();
+            DbService = dbService;
+            foreach(Car car in cars)
+            {
+                dbService.AddObjectAsync(car);
+            }
             //insert json/DB injection here pls
         }
-        public void AddCar(Car car)
+        public async Task AddCarAsync(Car car)
         {
             cars.Add(car);
+            await DbService.AddObjectAsync(car);
             //Save Here When DB/json made
         }
 
@@ -89,7 +96,7 @@ namespace Importør.Services
             return filterList;
         }
 
-        public void UpdateCar(Car car)
+        public async Task UpdateCarAsync(Car car)
         {
             if(car != null)
             {
@@ -106,9 +113,10 @@ namespace Importør.Services
                     }
                     //Insert Save method here for DB
                 }
+                await DbService.UpdateObjectAsync(car);
             }
         }
-        public Car DeleteCar(int id)
+        public async Task DeleteCarAsync(int id)
         {
             Car carToDelete = null;
             foreach(Car car in cars)
@@ -120,11 +128,12 @@ namespace Importør.Services
                 }
                 if (carToDelete != null)
                 {
-                    cars.Remove(carToDelete);
+                    await DbService.DeleteObjectAsync(carToDelete);
+
                 }
 
             }
-            return carToDelete;
+            
         }
     }
 }

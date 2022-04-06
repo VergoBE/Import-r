@@ -29,12 +29,7 @@ namespace Importør.Pages.Car
             return Page();
         }
 
-        public async void AddCar(Models.Car car)
-        {
-            Cars.Add(car);
-
-            //await Dbservice.AddÓbjectAsync(car);
-        }
+        
 
         //public IActionResult PriceSearch(int maxPrice, int minPrice)
         //{
