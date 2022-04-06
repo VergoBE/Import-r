@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace Importør.Services
 {
-    public class LoginService
+    interface IService<T>
     {
+        Task<IEnumerable<T>> GetObjectsAsync();
     }
 }

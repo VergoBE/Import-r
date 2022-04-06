@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Importør.Pages.Car
 {
+
     public class GetAllCarsModel : PageModel
     {
         private CarService carService;
@@ -22,25 +23,14 @@ namespace Importør.Pages.Car
         {
             this.carService = carService;
         }
-
+        
         public IActionResult OnGet()
         {
             Cars = carService.GetCars().ToList();
             return Page();
         }
 
-        public async void AddCar(Models.Car car)
-        {
-            Cars.Add(car);
-
-            //await Dbservice.AddÓbjectAsync(car);
-        }
-
-        //public IActionResult PriceSearch(int maxPrice, int minPrice)
-        //{
-        //    Cars = carService.PriceSearch(maxPrice, minPrice).ToList();
-        //    return Page();
-        //}
+        
 
         public IActionResult FuelSearch(string fuel)
         {
