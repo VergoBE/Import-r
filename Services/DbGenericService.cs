@@ -42,12 +42,24 @@ namespace Importør.Services
                 await context.SaveChangesAsync();
             }
         }
-
+        //TODO Fix userAdd så jeg har en db uden hasherfejl
         public async Task<T> GetObjectByIdAsync(int id)
         {
             using (var context = new CarDbContext())
             {
                 return await context.Set<T>().FindAsync(id);
+            }
+        }
+        public async Task SaveUsers(List<User> users)
+        {
+            using (var context = new CarDbContext())
+            {
+                foreach (User user in users)
+                {
+                    context.Users.Add(user);
+
+                }
+                context.SaveChanges();
             }
         }
     }

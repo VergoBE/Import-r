@@ -9,15 +9,19 @@ namespace Importør.Services
 {
     public class UserService : IUserService
     {
-        private List<User> users;
-
+        public List<User> users;
+        public DbGenericService<User> DbService;
         public IEnumerable<User> GetUsers()
         {
             return users;
         }
-        public UserService()
+        public UserService(DbGenericService<User> dbService)
         {
             users = MockData.MockUsers.GetMockUsers();
+            DbService = dbService;
+            //users = dbService.GetObjectsAsync().Result.ToList();
+            dbService.SaveUsers(users);
+            
         }
     }
 }

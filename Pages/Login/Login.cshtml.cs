@@ -30,7 +30,7 @@ namespace Importør.Pages.Login
 
        public async Task<IActionResult> OnPost()
         {
-            List<User> userList = new List<User>();
+            List<User> userList = userService.users;
             foreach(User u in userList)
             {
                 if (UserName == u.UserName)
@@ -44,20 +44,25 @@ namespace Importør.Pages.Login
                             new Claim(ClaimTypes.Name,UserName)
                         };
                         if (UserName != "admin") claims.Add(new Claim(ClaimTypes.Role, "Customer"));
-                        if(UserName == "admin") claims.Add(new Claim(ClaimTypes.Role, "Admin"));
-                        var claimsIdentity =
-                            new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                            var claimsIdentity =
+                                new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                                new ClaimsPrincipal(claimsIdentity));
+                        if (UserName == "admin") claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                        var claimsIdentity2 =
+                                new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                            new ClaimsPrincipal(claimsIdentity));
-                        
-                        
+                            new ClaimsPrincipal(claimsIdentity2));
+
                         return RedirectToPage("/Car/GetAllCars");
                         
                     }
                     
                 }
             }
-            return RedirectToPage("/Car/GetAllCars");
+            Message = "Invalid Attempt!";
+            return Page();
         }
     }
 }
