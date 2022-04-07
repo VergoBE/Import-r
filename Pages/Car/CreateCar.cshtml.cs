@@ -13,16 +13,18 @@ namespace Importør.Pages.Car
     [Authorize(Roles = "Admin")]
     public class CreateCarModel : PageModel
     {
-        private CarService carService;
-        private List<Models.Car> carList;
+        private CarService _carService;
+        private List<Models.Car> cars;
 
         public CreateCarModel(CarService carService)
         {
-            this.carService = carService;
-            carList = carService.GetCars().ToList();
+            _carService = carService;
+            cars = carService.GetCars().ToList();
+            
         }
+        
 
-        public Models.Car Car { get; set; }
+      [BindProperty]  public Models.Car Car { get; set; }
         public IActionResult OnGet()
         {
             return Page();
@@ -34,8 +36,9 @@ namespace Importør.Pages.Car
             {
                 return Page();
             }
-            await carService.AddCarAsync(Car);
-            return RedirectToPage("GetAllCars");
+            await _carService.AddCarAsync(Car);
+            
+            return RedirectToPage("/GetAllCars");
         }
 
     }

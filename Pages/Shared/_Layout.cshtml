@@ -27,9 +27,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Car/GetAllCars">Cars</a>
                         </li>
+                        @{
+            if (Context.User.Identity.Name == null)
+                            { 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""asp-page="/Login/Login">LogInHere!!!1!</a>
+                            <a class="nav-link text-dark" asp-area=""asp-page="/Login/Login">LogInHere!</a>
                         </li>
+                            }
+                        }
+                            @{
+                                if (Context.User.Identity.Name != null) {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Login/LogOut">Logout!</a>
+                            </li>
+                                    } }
                     </ul>
                 </div>
             </div>

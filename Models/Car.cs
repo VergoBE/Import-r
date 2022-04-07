@@ -10,7 +10,7 @@ namespace Importør.Models
     public class Car
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CarId { get; set; }
         [Required]
         public string Type { get; set; }
@@ -35,7 +35,10 @@ namespace Importør.Models
             Price = price;
             Location = location;
         }
+        public Car()
+        {
 
+        }
 
     }
 }

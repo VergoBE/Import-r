@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Importør.Services
 {
-    public class UserService : IUserService
+    public class UserService
     {
         public List<User> users;
         public DbGenericService<User> DbService;
@@ -17,10 +17,14 @@ namespace Importør.Services
         }
         public UserService(DbGenericService<User> dbService)
         {
-            users = MockData.MockUsers.GetMockUsers();
+            //users = MockData.MockUsers.GetMockUsers();
             DbService = dbService;
-            //users = dbService.GetObjectsAsync().Result.ToList();
-            dbService.SaveUsers(users);
+            //foreach(User user in users)
+            //{
+            //    dbService.AddObjectAsync(user);
+            //}
+            users = dbService.GetObjectsAsync().Result.ToList();
+            //dbService.SaveUsers(users);
             
         }
     }

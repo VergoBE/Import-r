@@ -50,6 +50,7 @@ namespace Importør
                 options.AddPolicy("Admin", policy =>
                     policy.RequireClaim(ClaimTypes.Role, "Admin"));
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,8 +71,9 @@ namespace Importør
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

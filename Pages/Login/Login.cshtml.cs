@@ -43,21 +43,23 @@ namespace Importør.Pages.Login
                         {
                             new Claim(ClaimTypes.Name,UserName)
                         };
-                        if (UserName != "admin") claims.Add(new Claim(ClaimTypes.Role, "Customer"));
+                        if (UserName == "admin") claims.Add(new Claim(ClaimTypes.Role,"Admin"));
 
                             var claimsIdentity =
                                 new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                                 new ClaimsPrincipal(claimsIdentity));
-                        if (UserName == "admin") claims.Add(new Claim(ClaimTypes.Role, "Admin"));
-                        var claimsIdentity2 =
-                                new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                            new ClaimsPrincipal(claimsIdentity2));
-
                         return RedirectToPage("/Car/GetAllCars");
-                        
+                        //if (UserName == "admin") claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                        //var claimsIdentity2 =
+                        //        new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                        //    new ClaimsPrincipal(claimsIdentity2));
+
+                        //return RedirectToPage("/Car/GetAllCars");
+
                     }
+                   
                     
                 }
             }
