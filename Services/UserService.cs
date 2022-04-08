@@ -19,13 +19,13 @@ namespace Importør.Services
         {
             //users = MockData.MockUsers.GetMockUsers();
             DbService = dbService;
-            //foreach(User user in users)
+            //foreach (User user in users)
             //{
             //    dbService.AddObjectAsync(user);
             //}
             users = dbService.GetObjectsAsync().Result.ToList();
             //dbService.SaveUsers(users);
-            
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Importør.Models
     public class Car
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CarId { get; set; }
         [Required]
         public string Type { get; set; }
